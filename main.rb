@@ -23,7 +23,7 @@ post '/login' do
     flash[:error] = "Error: The user or the password field is empty"
     redirect to ('/login')
   elsif User.first(:username => "#{params[:user][:username]}", :password => "#{params[:user][:password]}")
-    flash[:success] = "Login successfully"
+    flash[:login] = "Login successfully"
     session["user"] = "#{params[:user][:username]}"
     puts session["user"]
     redirect to ('/')
@@ -31,4 +31,10 @@ post '/login' do
     flash[:error] = "The user doesn't exist or the password is invalid"
     redirect to("/login")
   end
+end
+
+get '/logout' do
+  session.delete("user")
+  flash[:logout] = "Logout successfully"
+  redirect to ('/')
 end
