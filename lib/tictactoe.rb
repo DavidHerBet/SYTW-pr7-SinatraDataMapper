@@ -1,9 +1,12 @@
+require 'dm-core'
+require 'dm-migrations'
 require 'sinatra'
 require 'sass'
 require 'pp'
+#require './lib/user'
 
-settings.port = ENV['PORT'] || 4567
-enable :sessions
+#settings.port = ENV['PORT'] || 4567
+#enable :sessions
 #use Rack::Session::Pool, :expire_after => 2592000
 #set :session_secret, 'super secret'
 
@@ -139,7 +142,15 @@ get %r{^/([abc][123])?$} do |human|
       # computer = board.legal_moves.sample
       computer = smart_move
       redirect to ('/humanwins') if human_wins?
-      redirect to('/') unless computer
+      if !computer
+        if session["user"]
+          user = User.first(:username => "#{session["user"]}")
+          user.games += 1
+          user.tied_games += 1
+          user.save
+        end
+        redirect to('/')
+      end
       board[computer] = TicTacToe::CROSS
       puts "I played: #{computer}!"
       puts "Tablero:  #{board.inspect}"
@@ -158,6 +169,12 @@ get '/humanwins' do
   pp session
   begin
     m = if human_wins? then
+          if session["user"]
+            user = User.first(:username => "#{session["user"]}")
+            user.games += 1
+            user.won_games += 1
+            user.save
+          end
           'Human wins'
         else 
           redirect '/'
@@ -173,6 +190,13 @@ get '/computerwins' do
   pp session
   begin
     m = if computer_wins? then
+          # ESTO DEBERIA FUNCIONAR PERO NO FUNCIONA NOSE PORQUE
+          if session["user"]
+            user = User.first(:username => "#{session["user"]}")
+            user.games += 1
+            user.lost_games += 1
+            user.save
+          end
           'Computer wins'
         else 
           redirect '/'
