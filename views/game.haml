@@ -1,5 +1,7 @@
-- if flash[:success]
-  %p= flash[:success]
+- if flash[:login]
+  %p= flash[:login]
+- if flash[:logout]
+  %p= flash[:logout]
 .screen
   .gameboard
     - HORIZONTALS.each do |row| 
