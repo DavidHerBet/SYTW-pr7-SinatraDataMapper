@@ -1,8 +1,10 @@
+- if flash[:success]
+  %p= flash[:success]
 .user
   %h1= @user.username
   %h2 Datos de partidas
   %ul
-    %li Jugadas:
-    %li Ganadas:
-    %li Perdidas:
-    %li Empatadas:
+    %li Jugadas: #{@user.games}
+    %li Ganadas: #{@user.won_games}
+    %li Perdidas: #{@user.lost_games}
+    %li Empatadas: #{@user.tied_games}
