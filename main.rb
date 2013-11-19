@@ -12,7 +12,7 @@ configure :development do
   DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
 end
 
-User.auto_migrate!
+User.auto_upgrade!
 
 get '/login' do
   haml :login
