@@ -42,13 +42,13 @@ post '/users' do
     flash[:error] = "The user has been already created"
     redirect to ('/users/new')
   else
+    params[:user]["games"] = 0
+    params[:user]["won_games"] = 0
+    params[:user]["lost_games"] = 0
+    params[:user]["tied_games"] = 0
     user = User.create(params[:user])
-    puts user
-    puts user.games
-    user.games = 0
-    user.won_games = 0
-    user.lost_games = 0
-    user.tied_games = 0
+    puts params[:user]
+    puts "#{user.games}"
     flash[:success] = "User created successfully"
     redirect to("/users/#{user.id}")
   end
