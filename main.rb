@@ -11,3 +11,7 @@ configure :development do
 end
 
 User.auto_migrate!
+
+get '/login' do
+  haml :login
+end
