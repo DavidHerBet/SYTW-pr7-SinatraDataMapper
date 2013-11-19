@@ -1,6 +1,6 @@
 desc "run server"
 task :default do
-  sh "bundle exec ruby app.rb"
+  sh "bundle exec ruby main.rb"
 end
 
 desc "install dependencies"
