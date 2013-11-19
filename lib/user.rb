@@ -2,7 +2,6 @@ require 'dm-core'
 require 'dm-migrations'
 require 'sinatra/flash'
 
-
 class User
   include DataMapper::Resource
   property :id, Serial
