@@ -8,12 +8,12 @@
         %th Won games
         %th Lost games
         %th Tied games
-    - @users.each do |user|
-      %tr
-        %td= user.username
-        %td= user.games
-        %td= user.won_games
-        %td= user.lost_games
-        %td= user.tied_games
+      - @users.each do |user|
+        %tr
+          %td= user.username
+          %td= user.games
+          %td= user.won_games
+          %td= user.lost_games
+          %td= user.tied_games
   - else
     None has registered on the app :(
