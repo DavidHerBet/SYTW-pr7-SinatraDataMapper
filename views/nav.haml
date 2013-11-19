@@ -3,8 +3,13 @@
     %li
       %a{:href => "/"}Home
     %li
-      %a{:href => "/login"}Login
-    %li
       %a{:href => "/users/new"}Signup
     %li
       %a{:href => "/users"}Users
+    - if session[:user]
+      %li= session[:user]
+      %li
+        %a{:href => "/logout"}Logout
+    - else
+      %li
+        %a{:href => "/login"}Login
