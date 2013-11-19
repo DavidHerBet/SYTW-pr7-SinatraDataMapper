@@ -4,6 +4,8 @@ require 'sass'
 require './lib/tictactoe'
 require './lib/user'
 
+enable :sessions
+
 get('/styles.css'){ scss :styles }
 
 configure :development do
@@ -22,6 +24,8 @@ post '/login' do
     redirect to ('/login')
   elsif User.first(:username => "#{params[:user][:username]}", :password => "#{params[:user][:password]}")
     flash[:success] = "Login successfully"
+    session["user"] = "#{params[:user][:username]}"
+    puts session["user"]
     redirect to ('/')
   else
     flash[:error] = "The user doesn't exist or the password is invalid"
