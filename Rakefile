@@ -3,6 +3,11 @@ task :default do
   sh "rackup"
 end
 
+desc "run server with bundle exec"
+task :bunxec do
+  sh "bundle exec ruby main.rb"
+end
+
 desc "install dependencies"
 task :install do
   sh "bundle install"
