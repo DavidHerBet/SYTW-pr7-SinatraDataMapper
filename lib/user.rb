@@ -52,6 +52,8 @@ post '/users' do
     puts params[:user]
     puts "#{user.games}"
     flash[:success] = "User created successfully"
+    flash[:login] = "Login successfully"
+    session["user"] = "#{params[:user][:username]}"
     redirect to("/users/#{user.id}")
   end
 end

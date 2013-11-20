@@ -1,6 +1,9 @@
 - if flash[:success]
   .success
     %p= flash[:success]
+- if flash[:login]
+  .success
+    %p= flash[:login]
 .user
   %h1= @user.username
   %h2 Datos de partidas
