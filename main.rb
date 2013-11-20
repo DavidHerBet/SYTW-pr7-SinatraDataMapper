@@ -6,8 +6,6 @@ require './lib/user'
 
 enable :sessions
 
-get('/styles.css'){ scss :styles }
-
 configure :development do
   DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
 end
@@ -41,4 +39,8 @@ get '/logout' do
   session.delete("user")
   flash[:logout] = "Logout successfully"
   redirect to ('/')
+end
+
+get '/styles.css' do
+  scss :styles
 end

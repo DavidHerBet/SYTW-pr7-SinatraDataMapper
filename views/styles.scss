@@ -32,6 +32,8 @@ body       {
              width: $board-size;
              margin: $board-margin;
              text-align:center;
+             height: auto;
+             overflow: hidden;
            }
 .gamerow   { clear: both; }
 .cell      { color: blue; 
@@ -118,12 +120,17 @@ footer {
   }
 }
 
-.signup, .login {
+.signup, .login, .user {
   background-color: #FFF;
   margin: 10px;
   text-align: center;
   padding-top: 2.5px;
   padding-bottom: 25px;
+  ul {
+    li {
+      list-style: none;
+    }
+  }
 }
 
 .error {

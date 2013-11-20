@@ -212,7 +212,3 @@ not_found do
   session["bs"] = inicializa()
   haml :game, :locals => { :b => board, :m => 'Let us start a new game'  }
 end
-
-get '/styles.css' do
-  scss :styles
-end

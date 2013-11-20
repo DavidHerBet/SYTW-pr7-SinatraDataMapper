@@ -66,7 +66,3 @@ end
 #   User.get(params[:id]).destroy
 #   redirect to('/users')
 #end
-
-get '/styles.css' do
-  scss :styles
-end
