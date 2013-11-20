@@ -3,6 +3,7 @@ $black: #444;
 $white: #fff;
 $ull:   #9900FF;
 $pink:  #F9A7B0;
+$yellow: #FFFF00;
 
 $main-font: Helvetica, Arial, sans-serif;
 $message-font: 22px/1;
@@ -143,4 +144,9 @@ footer {
 
 .active{
   background-color: #C0C0C0;
+}
+
+.par{
+  background-color: $yellow;
+  color: $yellow;
 }
