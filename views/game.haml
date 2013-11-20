@@ -1,14 +1,20 @@
 - if flash[:login]
-  %p= flash[:login]
+  .success
+    %p= flash[:login]
 - if flash[:logout]
-  %p= flash[:logout]
+  .success
+    %p= flash[:logout]
 .screen
   .gameboard
-    - HORIZONTALS.each do |row| 
+    - HORIZONTALS.each_with_index do |row, rowindex| 
       .gamerow
-        - row.each do |p|
-          %a(href=p)
-            %div{:id => "#{p}", :class => "cell #{b[p]}"}
+        - row.each_with_index do |p, pindex|
+          - if ((pindex % 2 == 0) && (rowindex % 2 == 0)) || (rowindex == pindex)
+            %a(href=p)
+              %div{:id => "#{p}", :class => "cell #{b[p]} par"}
+          - else
+            %a(href=p)
+              %div{:id => "#{p}", :class => "cell #{b[p]} "}
     .message
       %h1= m
 

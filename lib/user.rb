@@ -1,6 +1,8 @@
 require 'dm-core'
 require 'dm-migrations'
+require 'sinatra'
 require 'sinatra/flash'
+require 'sass'
 
 class User
   include DataMapper::Resource
@@ -29,10 +31,10 @@ get '/users/:id' do |id|
   haml :show_user
 end
 
-get '/users/:id/edit' do
-  @user = User.get(params[:id])
-  slim :edit_user
-end
+#get '/users/:id/edit' do
+#  @user = User.get(params[:id])
+#  haml :edit_user
+#end
 
 post '/users' do
   if (params[:user][:username].empty?) || (params[:user][:password].empty?)
@@ -60,7 +62,11 @@ put 'users/:id' do
   redirect to("/users/#{user.id}")
 end
 
-delete '/users/:id' do
-   User.get(params[:id]).destroy
-   redirect to('/users')
+#delete '/users/:id' do
+#   User.get(params[:id]).destroy
+#   redirect to('/users')
+#end
+
+get '/styles.css' do
+  scss :styles
 end
