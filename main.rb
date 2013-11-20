@@ -14,7 +14,7 @@ end
 
 # Setup para la producción
 configure :production do
-  DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+  DataMapper.setup(:default, ENV['DATABASE_URL'])
 end
 
 # Se encarga de crear el esquema de la base de datos basándose
@@ -22,7 +22,7 @@ end
 # existentes. Pero no cambia ni elimina ninguna columna, a 
 # diferencia de auto_migrate!, que te crea la base de datos
 # de nuevo y vacío
-User.auto_upgrade!
+DataMapper.auto_upgrade!
 
 # Carga el formulario para logearse
 get '/login' do
