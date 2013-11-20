@@ -1,22 +1,4 @@
-require 'dm-core'
-require 'dm-migrations'
-require 'sinatra'
-require 'sass'
 require 'pp'
-#require './lib/user'
-
-#settings.port = ENV['PORT'] || 4567
-#enable :sessions
-#use Rack::Session::Pool, :expire_after => 2592000
-#set :session_secret, 'super secret'
-
-#configure :development, :test do
-#  set :sessions, :domain => 'example.com'
-#end
-
-#configure :production do
-#  set :sessions, :domain => 'herokuapp.com'
-#end
 
 module TicTacToe
   HUMAN = CIRCLE = "circle" # human
@@ -142,6 +124,11 @@ get %r{^/([abc][123])?$} do |human|
       # computer = board.legal_moves.sample
       computer = smart_move
       redirect to ('/humanwins') if human_wins?
+      
+      # Si el ordenador no puede hacer más movimientos y el
+      # humano no ha ganado, significa que ha habido un empate
+      # Si el usuario ha realizado login, guarda las estadísticas
+      # de la partida
       if !computer
         if session["user"]
           user = User.first(:username => "#{session["user"]}")
@@ -169,6 +156,9 @@ get '/humanwins' do
   pp session
   begin
     m = if human_wins? then
+
+          # Si el usuario ha realizado login, guarda las estadísticas
+          # de la partida
           if session["user"]
             user = User.first(:username => "#{session["user"]}")
             user.games += 1
@@ -190,7 +180,9 @@ get '/computerwins' do
   pp session
   begin
     m = if computer_wins? then
-          # ESTO DEBERIA FUNCIONAR PERO NO FUNCIONA NOSE PORQUE
+
+          # Si el usuario ha realizado login, guarda las estadísticas
+          # de la partida
           if session["user"]
             user = User.first(:username => "#{session["user"]}")
             user.games += 1
