@@ -56,6 +56,7 @@ Instrucciones
 7. Consulta los datos de las partidas de otros jugadores yendo al enlace "Login".
 
 **Para ver la aplicación desplegada**
+
 1. Abre el navegador y accede a [DMSinatra en Heroku](http://david-herbet-dmsinatra.herokuapp.com/):
 
         http://david-herbet-dmsinatra.herokuapp.com/
