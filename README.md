@@ -30,6 +30,37 @@ Sass es un metalenguaje de Hojas de Estilo en Cascada (CSS). Es un lenguaje de s
 
 Fuente: [SAAS - Wikipedia](http://es.wikipedia.org/wiki/Sass_\(lenguaje_de_hojas_de_estilo\))
 
+Instrucciones
+-------------
+**Para ejecutar localmente**
+
+1. Clona este repositorio para disponer del código:
+
+        $ git clone git@github.com:DavidHerBet/SYTW-pr7-SinatraDataMapper.git
+
+2. Instala las gemas correspondientes para que todo funcione correctamente:
+
+        $ bundle install
+
+3. Ejecuta el programa de forma manual o mediante Rake:
+
+        $ rackup
+        $ rake
+
+5. Abre el navegador y ve al puerto 9292 para ver la aplicación:
+
+        $ http://localhost:9292/
+
+6. Visualiza los estilos y juega al tres en raya. Si te creas un usuario, se guardarán los datos de tus partidas. Para ello deberás registrarte yendo al enlace "Signup" y automáticamente se te creará la cuenta y se logueará.
+
+7. Consulta los datos de las partidas de otros jugadores yendo al enlace "Login".
+
+**Para ver la aplicación desplegada**
+1. Abre el navegador y accede a [DMSinatra en Heroku](http://david-herbet-dmsinatra.herokuapp.com/):
+
+        http://david-herbet-dmsinatra.herokuapp.com/
+
+2. Comprueba que todo funciona correctamente
 
 ---
 Universidad de La Laguna  
