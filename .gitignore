@@ -3,3 +3,6 @@
 
 # Archivos de caché
 .sass-cache
+
+# Archivos comprimidos
+*.tar.gz
