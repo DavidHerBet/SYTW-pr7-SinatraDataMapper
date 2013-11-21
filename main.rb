@@ -5,7 +5,9 @@ require './lib/tictactoe'
 require './lib/user'
 
 # Habilita las sesiones
-enable :sessions
+# enable :sessions
+use Rack::Session::Pool, :expire_after => 2592000
+set :session_secret, 'super secret'
 
 # Setup para el desarrollo
 configure :development do
